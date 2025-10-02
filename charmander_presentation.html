@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charmander Top 3 Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .presentation {
+            width: 90%;
+            max-width: 1000px;
+            height: 90vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 60px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-1 {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .slide-1 h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .slide-1 p {
+            font-size: 1.8em;
+            font-style: italic;
+        }
+
+        .slide-1 .fire-emoji {
+            font-size: 5em;
+            margin: 30px 0;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #FF6B6B;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            width: 100%;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .image-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-content img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1.3em;
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #333;
+        }
+
+        li:before {
+            content: "🔥";
+            position: absolute;
+            left: 0;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 60px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background: #FF6B6B;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            background: #FF8E53;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-counter {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 1.2em;
+            color: #666;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        .evolution-images {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .evolution-images img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .evolution-item {
+            text-align: center;
+        }
+
+        .evolution-item p {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .comparison {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .emoji-large {
+            font-size: 4em;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / 8
+        </div>
+
+        <!-- Slide 1: Title -->
+        <div class="slide slide-1 active">
+            <div class="fire-emoji">🔥</div>
+            <h1>Why Charmander is<br>Objectively Top 3 Pokémon</h1>
+            <p>A Data-Driven Presentation</p>
+            <p style="font-size: 1.2em; margin-top: 30px;">"Your Favorite Starter is Wrong"</p>
+        </div>
+
+        <!-- Slide 2: Tail Flame -->
+        <div class="slide">
+            <h2>The Tail Flame Advantage</h2>
+            <div class="content">
+                <div class="text-content">
+                    <h3>Peak Performance Indicator</h3>
+                    <ul>
+                        <li>Built-in mood ring (no therapy needed)</li>
+                        <li>Natural nightlight (saves on electricity bills)</li>
+                        <li>Instant campfire (survival skills: 100)</li>
+                        <li>Death countdown timer adds <em>spice</em> to life</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <img src="https://github.com/Keiferj/charmander/blob/main/4.png" alt="Charmander">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Evolution -->
+        <div class="slide">
+            <h2>The Evolution Glow-Up</h2>
+            <div class="content">
+                <div class="text-content">
+                    <h3>From Cute to Catastrophic</h3>
+                    <ul>
+                        <li>Charmander: Adorable fire lizard</li>
+                        <li>Charmeleon: Teenage angst phase</li>
+                        <li>Charizard: <strong>LITERAL DRAGON</strong></li>
+                        <li>Comparison: Squirtle becomes slightly larger turtle</li>
+                    </ul>
+                </div>
+                <div class="image-content evolution-images">
+                    <div class="evolution-item">
+                        <img src="images/charmander.png" alt="Charmander">
+                        <p>Charmander</p>
+                    </div>
+                    <div class="evolution-item">
+                        <img src="images/charmeleon.png" alt="Charmeleon">
+                        <p>Charmeleon</p>
+                    </div>
+                    <div class="evolution-item">
+                        <img src="images/charizard.png" alt="Charizard">
+                        <p>Charizard</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Type Matchup -->
+        <div class="slide">
+            <h2>Type Matchup Math</h2>
+            <div class="content">
+                <div class="text-content">
+                    <h3>Strategic Dominance Analysis</h3>
+                    <ul>
+                        <li>Counters: Bug, Grass, Ice, Steel</li>
+                        <li>Bug types: everywhere and annoying</li>
+                        <li>Grass starters: 4x smugness, 0.25x effectiveness</li>
+                        <li>Ice types: melted</li>
+                        <li>Weak to: Rocks (just... don't use rocks)</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <div style="text-align: center;">
+                        <div class="emoji-large">🔥 > 🌿</div>
+                        <img src="images/charizard.png" alt="Charizard" style="max-height: 250px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Cultural Impact -->
+        <div class="slide">
+            <h2>Cultural Impact</h2>
+            <div class="content">
+                <div class="text-content">
+                    <h3>The Charizard Effect</h3>
+                    <ul>
+                        <li>Most expensive Pokémon card: Charizard</li>
+                        <li>Not Charizard: Every other card</li>
+                        <li>Red chose Charmander (canon protagonist)</li>
+                        <li>Ash's Charizard: Disobedient but unforgettable</li>
+                        <li>Your starter: Probably in a PC box</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <div style="text-align: center;">
+                        <div class="emoji-large">💰💎</div>
+                        <img src="images/charizard.png" alt="Charizard" style="max-height: 250px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Hard Mode -->
+        <div class="slide">
+            <h2>The Hard Mode Flex</h2>
+            <div class="content">
+                <div class="text-content">
+                    <h3>Choosing Excellence Over Easy</h3>
+                    <ul>
+                        <li>Gym 1: Rock type (pain)</li>
+                        <li>Gym 2: Water type (more pain)</li>
+                        <li>Character building: Achieved</li>
+                        <li>Skill development: Mandatory</li>
+                        <li>Bragging rights: Eternal</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <div style="text-align: center;">
+                        <div class="emoji-large">💪😤</div>
+                        <img src="images/charmander.png" alt="Charmander" style="max-height: 250px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Practical Applications -->
+        <div class="slide">
+            <h2>Practical Applications</h2>
+            <div class="content">
+                <div class="text-content">
+                    <h3>Real World Value</h3>
+                    <ul>
+                        <li>BBQ master (no propane needed)</li>
+                        <li>Home heating (eco-friendly?)</li>
+                        <li>S'mores on demand</li>
+                        <li>Natural predator of important documents</li>
+                        <li>Flying taxi service (post-evolution)</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <div style="text-align: center;">
+                        <div class="emoji-large">🍖🏠✈️</div>
+                        <img src="images/charizard.png" alt="Charizard" style="max-height: 250px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Conclusion -->
+        <div class="slide slide-1">
+            <h2 style="color: white; font-size: 3em;">Q.E.D.</h2>
+            <h3 style="color: white; font-size: 2em;">Charmander ≥ 3rd Place</h3>
+            <div class="emoji-large">🔥🏆🔥</div>
+            <p style="font-size: 1.8em; margin-top: 30px;">
+                "Some choose the path of least resistance.<br>
+                <strong>Legends choose Charmander."</strong>
+            </p>
+            <p style="font-size: 1.3em; margin-top: 40px; font-style: italic;">
+                Questions? (Wrong answers only)
+            </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button id="prev-btn" onclick="changeSlide(-1)">← Previous</button>
+            <button id="next-btn" onclick="changeSlide(1)">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 8;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const counter = document.getElementById('current-slide');
+
+            if (n > totalSlides) currentSlide = totalSlides;
+            if (n < 1) currentSlide = 1;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+
+            counter.textContent = currentSlide;
+
+            prevBtn.disabled = currentSlide === 1;
+            nextBtn.disabled = currentSlide === totalSlides;
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
